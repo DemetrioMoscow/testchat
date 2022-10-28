@@ -67,7 +67,8 @@ class UserService implements UserServiceInterface
     public function logout(): void
     {
         $this->changeStatus(Auth::user(), UserStatus::Offline);
-        Auth::logout();
+        Auth::user()->tokens()->delete();
+        Auth::guard('web')->logout();
     }
 
     /**

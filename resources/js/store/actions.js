@@ -3,10 +3,15 @@ import echo from '../echo';
 import {USER_STATUS_OFFLINE, USER_STATUS_ONLINE} from "../constants";
 
 export default {
-    loadChat({commit}) {
+    loadChat({commit, dispatch}) {
         axios.get('/api/chat/init')
             .then(response => {
                 commit('initChat', response.data);
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 401) {
+                    dispatch('logout');
+                }
             });
 
         echo.join('chat')
@@ -23,14 +28,12 @@ export default {
     },
 
     logout({commit}) {
-        return new Promise(resolve => {
-            echo.leave('chat');
-            axios.post('/api/auth/logout')
-                .then(() => {
-                    commit('logout');
-                    resolve();
-                });
-        })
+        echo.leave('chat');
+        axios.post('/api/auth/logout')
+            .finally(() => {
+                commit('logout');
+                document.location.replace('/');
+            });
     },
 
     init({commit}) {

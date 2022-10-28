@@ -106,10 +106,7 @@ export default {
 
     methods: {
         leave() {
-            this.logout()
-                .then(() => {
-                    this.$router.push('/');
-                })
+            this.logout();
         },
 
         scrollToBottom() {

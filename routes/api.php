@@ -30,7 +30,7 @@ Route::group([
     'as' => 'auth.',
 ], function() {
     Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('login');
-    Route::post('logout', [\App\Http\Controllers\Api\AuthController::class, 'logout'])->name('logout');
+    Route::middleware('auth:sanctum')->post('logout', [\App\Http\Controllers\Api\AuthController::class, 'logout'])->name('logout');
     Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register'])->name('register');
 });
 
