@@ -1,0 +1,24 @@
+@import '~bootstrap/scss/bootstrap';
+@import 'transitions';
+
+html, body {
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #262837;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+    cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.list-item {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.list-leave-active {
+    position: absolute;
+}
