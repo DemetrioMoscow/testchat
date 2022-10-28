@@ -34,7 +34,7 @@ class SendMessageRequest extends FormRequest
             'message' => [
                 'required',
                 'string',
-                'regex:/[a-z]+/iu'
+                'regex:/^[a-z\s]+$/iu'
             ],
         ];
     }
